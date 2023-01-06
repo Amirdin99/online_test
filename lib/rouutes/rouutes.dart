@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_test/rouutes/route_names.dart';
+import 'package:online_test/screens/home_screen/home_widgets/test_screen.dart';
 
 import '../screens/home_screen/home_screen.dart';
 import '../screens/select_language/select_language.dart';
@@ -42,6 +43,9 @@ class MainNavigator extends StatelessWidget {
               break;
             case MainRoutes.home_screen:
               builder = (BuildContext _) => HomeScreenPage();
+              break;
+            case MainRoutes.test_screen:
+              builder = (BuildContext _) => TestScreen();
               break;
           }
           if (builder != null) {
