@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_test/rouutes/route_names.dart';
 
+import '../screens/home_screen/home_screen.dart';
 import '../screens/select_language/select_language.dart';
 import '../screens/sign_in/sign_in_screen.dart';
 import '../screens/sign_up/sign_up_screen.dart';
@@ -38,6 +39,9 @@ class MainNavigator extends StatelessWidget {
               break;
             case MainRoutes.sign_in_screen:
               builder = (BuildContext _) => SignInPage();
+              break;
+            case MainRoutes.home_screen:
+              builder = (BuildContext _) => HomeScreenPage();
               break;
           }
           if (builder != null) {

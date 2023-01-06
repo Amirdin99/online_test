@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../rouutes/route_names.dart';
+
 class SelectLanguage extends StatefulWidget {
   const SelectLanguage({Key? key}) : super(key: key);
 
@@ -12,7 +14,12 @@ class _SelectLanguageState extends State<SelectLanguage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Select Language"),
+        child: InkWell(
+            onTap: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(MainRoutes.home_screen);
+            },
+            child: Text("Select Language")),
       ),
     );
   }
