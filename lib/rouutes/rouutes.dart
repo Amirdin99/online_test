@@ -3,6 +3,7 @@ import 'package:online_test/rouutes/route_names.dart';
 import 'package:online_test/screens/home_screen/home_widgets/test_screen.dart';
 
 import '../screens/home_screen/home_screen.dart';
+import '../screens/my_profile_page.dart';
 import '../screens/select_language/select_language.dart';
 import '../screens/sign_in/sign_in_screen.dart';
 import '../screens/sign_up/sign_up_screen.dart';
@@ -30,19 +31,22 @@ class MainNavigator extends StatelessWidget {
           WidgetBuilder? builder;
           switch (settings.name) {
             case MainRoutes.splash:
-              builder = (BuildContext _) => SplashScreen();
+              builder = (BuildContext _) => const SplashScreen();
               break;
             case MainRoutes.selectLanguage:
-              builder = (BuildContext _) => SelectLanguage();
+              builder = (BuildContext _) => const SelectLanguage();
               break;
             case MainRoutes.sign_up_screen:
-              builder = (BuildContext _) => SignUpPage();
+              builder = (BuildContext _) => const SignUpPage();
               break;
             case MainRoutes.sign_in_screen:
-              builder = (BuildContext _) => SignInPage();
+              builder = (BuildContext _) => const SignInPage();
               break;
             case MainRoutes.home_screen:
-              builder = (BuildContext _) => HomeScreenPage();
+              builder = (BuildContext _) => const HomeScreenPage();
+              break;
+            case MainRoutes.my_profile_screen:
+              builder = (BuildContext _) => const MyProfilePage();
               break;
             case MainRoutes.test_screen:
               builder = (BuildContext _) => TestScreen();
