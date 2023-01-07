@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   init() {
     _animatedController =
-        AnimationController(duration: const Duration(seconds: 10), vsync: this)
+        AnimationController(duration: const Duration(seconds: 5), vsync: this)
           ..forward()
           ..addStatusListener((status) {
             if (status == AnimationStatus.completed) {
@@ -71,9 +71,10 @@ class _SplashScreenState extends State<SplashScreen>
               child: ScaleTransition(
                 scale: Tween(begin: 0.5, end: 1.0).animate(_curvedAnimation),
                 child: SizedBox(
-                  width: 300,
-                  height: 100,
-                  child: Image.network("https://xmed.uz/xmedlogo1024x500.png"),
+                  // width: 300,
+                  // height: 100,
+                  child:
+                      Image.asset('assets/splash_image.png', fit: BoxFit.fill),
                 ),
               ),
             ),
