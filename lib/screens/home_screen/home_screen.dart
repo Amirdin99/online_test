@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widget/drower_widget.dart';
+import 'home_widgets/item_list.dart';
 
 class HomeScreenPage extends StatefulWidget {
   const HomeScreenPage({Key? key}) : super(key: key);
@@ -17,10 +18,36 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
         child: DroverWidget(),
       ),
       appBar: AppBar(
-        title: const Text("Online test"),
+        elevation: 0,
+        backgroundColor: Colors.blue,
+        title: Text("Online test",style: TextStyle(
+            color: Colors.white
+        ),),
+        actions: [
+          TextButton(onPressed: (){}, child: const Text("Testlar",style: TextStyle(
+            color: Colors.white,
+          ),)),
+          const  SizedBox(
+            width: 5,
+          ),
+          TextButton(onPressed: (){}, child: const Text("Sertifikatlar",style: TextStyle(
+            color: Colors.white,
+          ),)),
+
+        ],
       ),
-      body: Column(
-        children: [Text("Home Page")],
+
+      body: Container(
+        color: Colors.white,
+        child: Expanded(
+          child: ListView.builder(
+              itemCount: 20,
+              itemBuilder: (context,index){
+            return ItemList();
+          }
+
+          ),
+        ),
       ),
     );
   }

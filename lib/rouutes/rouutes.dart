@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_test/rouutes/route_names.dart';
+import 'package:online_test/screens/home_screen/home_widgets/test_screen.dart';
 
 import '../screens/home_screen/home_screen.dart';
 import '../screens/my_profile_page.dart';
@@ -46,6 +47,9 @@ class MainNavigator extends StatelessWidget {
               break;
             case MainRoutes.my_profile_screen:
               builder = (BuildContext _) => const MyProfilePage();
+              break;
+            case MainRoutes.test_screen:
+              builder = (BuildContext _) => TestScreen();
               break;
           }
           if (builder != null) {
