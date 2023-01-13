@@ -17,9 +17,15 @@ class _SelectLanguageState extends State<SelectLanguage> {
         child: InkWell(
             onTap: () {
               Navigator.of(context)
-                  .pushReplacementNamed(MainRoutes.home_screen);
+                  .pushReplacementNamed(MainRoutes.sign_in_screen);
             },
-            child: Text("Select Language")),
+            child: Container(
+                height: 50,
+                width: 240,
+                decoration: BoxDecoration(
+                    color: Colors.yellow,
+                    borderRadius: BorderRadius.circular(12)),
+                child: const Center(child: Text("Select Language")))),
       ),
     );
   }
