@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../rouutes/route_names.dart';
+
 class DroverWidget extends StatefulWidget {
   const DroverWidget({Key? key}) : super(key: key);
 
@@ -8,8 +10,6 @@ class DroverWidget extends StatefulWidget {
 }
 
 class _DroverVidgetState extends State<DroverWidget> {
-  final items = ['One', 'Two', 'Three', 'Four'];
-  String selectedValue = 'Four';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +51,9 @@ class _DroverVidgetState extends State<DroverWidget> {
             ),
           ),
           InkWell(
-            onTap: (){
-
+            onTap: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(MainRoutes.my_profile_screen);
             },
             child: Container(
               margin: const EdgeInsets.only(top: 20, left: 10),
