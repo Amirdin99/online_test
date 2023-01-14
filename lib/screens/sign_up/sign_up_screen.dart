@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../repositories/user_repositories.dart';
@@ -89,8 +90,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       /// Bu yerda isim
                       TextFormField(
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.account_circle_outlined),
-                            label: Text("Isim*")),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color:  Color(0xff2d2756),),
+                            ),
+                            prefixIcon: Icon(Icons.account_circle_outlined,color: Color(0xff2d2756),),
+                            label: Text("Isim*"), labelStyle: TextStyle(color: Color(0xff2d2756))),
                         enabled: true,
                         controller: _nameController,
                         focusNode: _nameFocusNode,
@@ -101,7 +105,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: Color(0xff2d2756),
+                              color: const Color(0xff2d2756),
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
                             ),
@@ -111,8 +115,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       /// Bu yerda familiya
                       TextFormField(
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.account_circle_outlined),
-                            label: Text("Familiya*")),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color:  Color(0xff2d2756),),
+                            ),
+                            prefixIcon: Icon(Icons.account_circle_outlined,color: Color(0xff2d2756),),
+                            label: Text("Familiya*"), labelStyle: TextStyle(color: Color(0xff2d2756))),
                         enabled: true,
                         controller: _lastNameController,
                         focusNode: _lastNameFocusNode,
@@ -133,8 +140,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       /// otasini ismi
                       TextFormField(
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.account_circle_outlined),
-                            label: Text("Otasining ismi*")),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color:  Color(0xff2d2756),),
+                            ),
+                            prefixIcon: Icon(Icons.account_circle_outlined,color: Color(0xff2d2756),),
+                            label: Text("Otasining ismi*"), labelStyle: TextStyle(color: Color(0xff2d2756))),
                         enabled: true,
                         controller: _fatherNameController,
                         focusNode: _fatherNameFocusNode,
@@ -156,8 +166,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       /// telifon raqan
                       TextFormField(
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.phone),
-                            label: Text("Telifon raqami*")),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color:  Color(0xff2d2756),),
+                            ),
+                            prefixIcon: Icon(Icons.phone,color: Color(0xff2d2756),),
+                            label: Text("Telifon raqami*"), labelStyle: TextStyle(color: Color(0xff2d2756))),
                         enabled: true,
                         controller: _phoneNumberController,
                         focusNode: _phoneNumberFocusNode,
@@ -179,8 +192,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       /// Electron pochta
                       TextFormField(
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.account_box),
-                            label: Text("Elektron pochta*")),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color:  Color(0xff2d2756),),
+                            ),
+                            prefixIcon: Icon(Icons.mail,color: Color(0xff2d2756),),
+                            label: Text("Elektron pochta*"), labelStyle: TextStyle(color: Color(0xff2d2756))),
                         enabled: true,
                         controller: _gmailController,
                         focusNode: _gmailFocusNode,
@@ -202,8 +218,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       /// Parol
                       TextFormField(
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.ac_unit_rounded),
-                            label: Text("Parol*")),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color:  Color(0xff2d2756),),
+                            ),
+                            prefixIcon: Icon(CupertinoIcons.padlock_solid,color: Color(0xff2d2756),),
+                            label: Text("Parol*"), labelStyle: TextStyle(color: Color(0xff2d2756))),
                         enabled: true,
                         controller: _pinCodeController,
                         focusNode: _pinCodeFocusNode,
@@ -225,8 +244,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       /// Resent Pin code
                       TextFormField(
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.ac_unit_rounded),
-                            label: Text("Parolni takrorlang*")),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color:  Color(0xff2d2756),),
+                            ),
+                            prefixIcon: Icon(CupertinoIcons.padlock_solid,color: Color(0xff2d2756),),
+                            label: Text("Parolni takrorlang*"), labelStyle: TextStyle(color: Color(0xff2d2756))),
                         enabled: true,
                         controller: _resentPinCodeController,
                         focusNode: _resentPinCodeFocusNode,
@@ -262,7 +284,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             height: 50,
                             width: double.infinity,
                             decoration: BoxDecoration(
-                                color: Colors.yellow,
+                                color:const Color(0xff2d2756),
                                 borderRadius: BorderRadius.circular(12)),
                             child: Center(
                               child: Text(

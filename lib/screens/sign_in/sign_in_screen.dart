@@ -71,8 +71,14 @@ class _SignInPageState extends State<SignInPage> {
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(CupertinoIcons.mail),
-                            label: Text("Gmail*")),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color:  Color(0xff2d2756),),
+                            ),
+                            prefixIcon: Icon(CupertinoIcons.mail,color: Color(0xff2d2756),),
+                            label: Text("Gmail*"),
+                          labelStyle: TextStyle(color: Color(0xff2d2756))
+                        ),
+
                         enabled: true,
                         controller: _gmailController,
                         focusNode: _gmailFocusNode,
@@ -83,26 +89,28 @@ class _SignInPageState extends State<SignInPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: Color(0xff2d2756),
+                              color: const Color(0xff2d2756),
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
                             ),
                       ),
                       const SizedBox(height: 16),
-
-                      /// Bu yerda familiya
                       TextFormField(
                         keyboardType: TextInputType.text,
                         obscureText: _isVisible ? false : true,
                         decoration: InputDecoration(
+                            focusedBorder: const UnderlineInputBorder(
+                              borderSide: BorderSide(color:  Color(0xff2d2756),),
+                            ),
                             suffixIcon: IconButton(
                               onPressed: () => updateStatus(),
                               icon: Icon(_isVisible
                                   ? Icons.visibility
-                                  : Icons.visibility_off),
+                                  : Icons.visibility_off,color: const  Color(0xff2d2756),),
                             ),
-                            prefixIcon: Icon(CupertinoIcons.padlock_solid),
-                            label: Text("Parol*")),
+                            prefixIcon:const Icon(CupertinoIcons.padlock_solid,color: Color(0xff2d2756),),
+                            label: const Text("Parol*"), labelStyle:
+                        const TextStyle(color: Color(0xff2d2756))),
                         enabled: true,
                         controller: _passwordController,
                         focusNode: _passwordFocusNode,
@@ -113,34 +121,38 @@ class _SignInPageState extends State<SignInPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: Color(0xff2d2756),
+                              color: const Color(0xff2d2756),
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
                             ),
                       ),
 
                       const SizedBox(height: 80),
-                      GestureDetector(
-                          onTap: () async {
-                            final response =
-                                await UserRepositories.getInstance().userSignIn(
-                                    password: _passwordController.text,
-                                    username: _gmailController.text);
-                          },
-                          child: Container(
-                            height: 50,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                color: Colors.yellow,
-                                borderRadius: BorderRadius.circular(12)),
-                            child: Center(
-                              child: Text(
-                                "Krish".toUpperCase(),
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ))
                     ],
+                  )),
+            ),
+             SizedBox(height: MediaQuery.of(context).size.height*0.4),
+            Container(
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              child: GestureDetector(
+                  onTap: () async {
+                    final response =
+                    await UserRepositories.getInstance().userSignIn(
+                        password: _passwordController.text,
+                        username: _gmailController.text);
+                  },
+                  child: Container(
+                    height: 50,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: const Color(0xff2d2756),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Center(
+                      child: Text(
+                        "Krish".toUpperCase(),
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
                   )),
             )
           ],
