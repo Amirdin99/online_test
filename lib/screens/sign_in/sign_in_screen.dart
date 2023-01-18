@@ -41,7 +41,7 @@ class _SignInPageState extends State<SignInPage> {
                   InkWell(
                     onTap: () {
                       Navigator.of(context)
-                          .pushReplacementNamed(MainRoutes.selectLanguage);
+                          .pushReplacementNamed(MainRoutes.sign_up_screen);
                     },
                     child: Icon(Platform.isAndroid
                         ? Icons.arrow_back
@@ -66,8 +66,6 @@ class _SignInPageState extends State<SignInPage> {
                   child: Column(
                     children: [
                       const SizedBox(height: 4),
-
-                      /// Bu yerda isim
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
@@ -136,10 +134,7 @@ class _SignInPageState extends State<SignInPage> {
               margin: const EdgeInsets.only(left: 20, right: 20),
               child: GestureDetector(
                   onTap: () async {
-                    final response =
-                    await UserRepositories.getInstance().userSignIn(
-                        password: _passwordController.text,
-                        username: _gmailController.text);
+                    final response = await UserRepositories.getInstance().userSignIn(password: _passwordController.text, username: _gmailController.text);
                   },
                   child: Container(
                     height: 50,
@@ -160,4 +155,9 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
+
+  void signUpResault() async {
+
+  }
+
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/ststus_code.dart';
 import '../../repositories/user_repositories.dart';
 import '../../rouutes/route_names.dart';
 
@@ -264,6 +265,20 @@ class _SignUpPageState extends State<SignUpPage> {
                               fontSize: 14,
                             ),
                       ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                           const SizedBox(),
+                          InkWell(
+                            onTap: (){
+                              Navigator.of(context)
+                                  .pushReplacementNamed(MainRoutes.sign_in_screen);
+                            },
+                            child: const Text("Hisobingiz bormi ?",style: TextStyle(color: Color(0xff2a2756)),),
+                          )
+                        ],
+                      ),
                       const SizedBox(height: 80),
                       GestureDetector(
                           onTap: () async {
@@ -278,7 +293,21 @@ class _SignUpPageState extends State<SignUpPage> {
                               phone: _phoneNumberController.text,
                               org_id: 1001223456,
                               org_name: "Test LLC",
-                            );
+                            ).then((value) async  {
+                              if (value is int) {
+                                switch(value){
+                                  case USER_REGISTERED:
+                                    Navigator.of(context)
+                                        .pushReplacementNamed(MainRoutes.home_screen);
+                                    break;
+                                  case USER_EALRY_REGISTERED:
+                                    Navigator.of(context)
+                                        .pushReplacementNamed(MainRoutes.sign_in_screen);
+                                    break;
+                                }
+                              }
+                            }
+                                );
                           },
                           child: Container(
                             height: 50,

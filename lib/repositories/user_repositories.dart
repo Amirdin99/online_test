@@ -2,12 +2,14 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../constants/ststus_code.dart';
 import '../constants/url_constants.dart';
 
 class UserRepositories {
   static final UserRepositories _singleton = UserRepositories._internal();
 
   UserRepositories._internal();
+
 
   static UserRepositories getInstance() {
     return _singleton;
@@ -23,6 +25,7 @@ class UserRepositories {
     required int org_id,
     required String org_name,
   }) async {
+    dynamic resultClass;
     final requestParameters = {
       "password": password,
       "username": username,
@@ -43,14 +46,22 @@ class UserRepositories {
         body: json.encode(requestParameters));
 
     final int statusCode = response.statusCode;
+    if(statusCode == 201){
+      // var resultClass = json.decode(utf8.decode(response.bodyBytes));
+      var resultClass = USER_REGISTERED;
+      return resultClass;
+    } else if(statusCode == 400) {
+      var resultClass = USER_EALRY_REGISTERED;
+      return resultClass;
+    } else if(statusCode == 401){
 
-    var resultClass = json.decode(utf8.decode(response.bodyBytes));
-    print(statusCode);
-    print(resultClass);
+    }
+    return resultClass;
   }
 
   Future<dynamic> userSignIn(
       {required String password, required String username}) async {
+    dynamic resultClass;
     final requestParameters = {
       "password": password,
       "username": username,
@@ -65,9 +76,16 @@ class UserRepositories {
         body: json.encode(requestParameters));
 
     final int statusCode = response.statusCode;
+    if(statusCode == 201){
+      // var resultClass = json.decode(utf8.decode(response.bodyBytes));
+      var resultClass = USER_REGISTERED;
+      return resultClass;
+    } else if(statusCode == 400) {
+      var resultClass = USER_EALRY_REGISTERED;
+      return resultClass;
+  } else if(statusCode == 401){
 
-    var resultClass = json.decode(utf8.decode(response.bodyBytes));
-    print(statusCode);
-    print(resultClass);
-  }
+    }
+    return resultClass;
+    }
 }
