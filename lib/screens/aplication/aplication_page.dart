@@ -55,7 +55,7 @@ class _AplicationPageState extends State<AplicationPage> {
                 controller: anoteController,
               ),
               ElevatedButton(onPressed: (){
-                UserRepositories.getInstance().login(password: "amirdin@gmail.com", username: "amirdin1999");
+                UserRepositories.getInstance().login(password: "amirdin1999", username: "amirdin@gmail.com");
               }, child: Text("Tekshirish")),
             ],
           ),
