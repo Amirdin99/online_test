@@ -134,7 +134,10 @@ class _SignInPageState extends State<SignInPage> {
               margin: const EdgeInsets.only(left: 20, right: 20),
               child: GestureDetector(
                   onTap: () async {
-                    final response = await UserRepositories.getInstance().userSignIn(password: _passwordController.text, username: _gmailController.text);
+                    final response = await UserRepositories.getInstance().login(password: _passwordController.text, username: _gmailController.text);
+
+                    Navigator.of(context)
+                        .pushReplacementNamed(MainRoutes.home_screen);
                   },
                   child: Container(
                     height: 50,

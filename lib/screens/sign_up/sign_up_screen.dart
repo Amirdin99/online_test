@@ -291,8 +291,6 @@ class _SignUpPageState extends State<SignUpPage> {
                               last_name: _lastNameController.text,
                               middle_name: _fatherNameController.text,
                               phone: _phoneNumberController.text,
-                              org_id: 1001223456,
-                              org_name: "Test LLC",
                             ).then((value) async  {
                               if (value is int) {
                                 switch(value){
