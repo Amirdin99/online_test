@@ -51,6 +51,33 @@ class _DroverVidgetState extends State<DroverWidget> {
             ),
           ),
           InkWell(
+            onTap: (){
+              Navigator.of(context).pushNamed(MainRoutes.home_screen);
+            },
+            child: Container(
+              margin: const EdgeInsets.only(top: 10, left: 10),
+              child: Row(
+                children: const [
+                  Icon(
+                    Icons.home,
+                    color: Color(0xff25D3C2),
+                    size: 25,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Asosiy",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white60),
+                  )
+                ],
+              ),
+            ),
+          ),
+          InkWell(
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(MainRoutes.my_profile_screen);
@@ -94,7 +121,7 @@ class _DroverVidgetState extends State<DroverWidget> {
                   color: Color(0xff25D3C2),
                 ),
                 Text(
-                  "Sertifikatlar",
+                  "Natijalar",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -127,24 +154,29 @@ class _DroverVidgetState extends State<DroverWidget> {
           ),
           Container(
             margin: const EdgeInsets.only(top: 20, left: 8),
-            child: Row(
-              children: const [
-                Icon(
-                  Icons.local_post_office_outlined,
-                  color: Color(0xff25D3C2),
-                  size: 25,
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  "Biz haqimizda",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white60),
-                )
-              ],
+            child: InkWell(
+              onTap: (){
+                Navigator.of(context).pushNamed(MainRoutes.aplication);
+              },
+              child: Row(
+                children: const [
+                  Icon(
+                    Icons.local_post_office_outlined,
+                    color: Color(0xff25D3C2),
+                    size: 25,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Ariza berish",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white60),
+                  )
+                ],
+              ),
             ),
           ),
           Container(
@@ -201,28 +233,33 @@ class _DroverVidgetState extends State<DroverWidget> {
             margin: const EdgeInsets.only(
               top: 20,
             ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 8,
-                ),
-                Image.asset(
-                  "assets/fasebook.png",
-                  width: 30,
-                  height: 30,
-                  color: Color(0xff25D3C2),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  "Sertifikatlar",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white60),
-                )
-              ],
+            child: InkWell(
+              onTap: (){
+                Navigator.of(context).pushNamed(MainRoutes.aplication);
+              },
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Image.asset(
+                    "assets/fasebook.png",
+                    width: 30,
+                    height: 30,
+                    color: Color(0xff25D3C2),
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Sertifikatlar",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white60),
+                  )
+                ],
+              ),
             ),
           ),
           const Spacer(),

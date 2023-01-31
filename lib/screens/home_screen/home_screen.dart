@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_test/rouutes/route_names.dart';
 
 import '../../widget/drower_widget.dart';
 import 'home_widgets/item_list.dart';
@@ -30,7 +31,9 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
           const  SizedBox(
             width: 5,
           ),
-          TextButton(onPressed: (){}, child: const Text("Sertifikatlar",style: TextStyle(
+          TextButton(onPressed: (){
+            Navigator.of(context).pushNamed(MainRoutes.aplication);
+          }, child: const Text("Sertifikatlar",style: TextStyle(
             color: Colors.white,
           ),)),
 
@@ -39,14 +42,12 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
 
       body: Container(
         color: Colors.white,
-        child: Expanded(
-          child: ListView.builder(
-              itemCount: 20,
-              itemBuilder: (context,index){
-            return ItemList();
-          }
+        child: ListView.builder(
+            itemCount: 20,
+            itemBuilder: (context,index){
+          return ItemList();
+        }
 
-          ),
         ),
       ),
     );

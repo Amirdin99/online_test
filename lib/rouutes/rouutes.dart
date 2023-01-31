@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_test/rouutes/route_names.dart';
+import 'package:online_test/screens/aplication/aplication_page.dart';
 import 'package:online_test/screens/home_screen/home_widgets/test_screen.dart';
 
 import '../screens/home_screen/home_screen.dart';
@@ -32,6 +33,9 @@ class MainNavigator extends StatelessWidget {
           switch (settings.name) {
             case MainRoutes.splash:
               builder = (BuildContext _) => const SplashScreen();
+              break;
+            case MainRoutes.aplication:
+              builder = (BuildContext _) => const AplicationPage();
               break;
             case MainRoutes.selectLanguage:
               builder = (BuildContext _) => const SelectLanguage();

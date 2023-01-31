@@ -6,4 +6,5 @@ class MainRoutes {
   static const String home_screen = "home_screen";
   static const String test_screen = "test_screen";
   static const String my_profile_screen = "my_profile_screen";
+  static const String aplication = "aplication";
 }
