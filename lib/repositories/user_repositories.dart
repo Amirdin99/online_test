@@ -66,7 +66,7 @@ class UserRepositories {
       "username": username,
     };
 
-    final String baseUrl = BASE_URL.SIGN_IN_API;
+    final String baseUrl = BASE_URL.LOGIN;
     final requestUrl = Uri.parse(baseUrl);
     final response = await http.post(requestUrl,
         headers: {
@@ -77,12 +77,15 @@ class UserRepositories {
     final int statusCode = response.statusCode;
     if(statusCode == 200){
        var resultClass = json.decode(utf8.decode(response.bodyBytes));
-       print("$resultClass");
-      return resultClass;
+       Utils.token_generate=resultClass['token'];
+       print("${Utils.token_generate}amir");
+       print("${resultClass['token']}amir");
+       print("${resultClass}amir");
+      return resultClass['token'];
     }
     else if(statusCode == 400) {
       var resultClass = "error login or parol";
-      print("$resultClass");
+      print("${resultClass}");
       return resultClass;
   }
     else if(statusCode == 401){
