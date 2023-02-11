@@ -45,14 +45,18 @@ class UserRepositories {
         body: json.encode(requestParameters));
 
     final int statusCode = response.statusCode;
-    var resultClass2 = json.decode(utf8.decode(response.bodyBytes));
-    print("Flutter registretion $resultClass2 $statusCode ${response.body}");
-
     if(statusCode == 201 || statusCode == 201) {
         var resultClass = USER_REGISTERED;
         return resultClass;
-      } else {
-      return resultClass2;
+      } else if(statusCode == 400) {
+      var resultClass = USER_ALREADY_REGISTERED;
+      return resultClass;
+    } else if(statusCode == 401){
+      var resultClass = USER_PHONE_NUMBER_OR_PASSWORD_ERROR;
+      return resultClass;
+    } else {
+      var resultClass = SOMTHING_WRONG;
+      return resultClass;
     }
   }
 
@@ -73,19 +77,18 @@ class UserRepositories {
         body: json.encode(requestParameters));
 
     final int statusCode = response.statusCode;
-    if(statusCode == 200){
-       var resultClass = json.decode(utf8.decode(response.bodyBytes));
-       print("$resultClass");
+    if(statusCode == 200 || statusCode == 201 ){
+        resultClass = USER_LOGGED_IN;
       return resultClass;
     }
     else if(statusCode == 400) {
-      var resultClass = "error login or parol";
-      print("$resultClass");
+      resultClass = USER_PHONE_NUMBER_OR_PASSWORD_ERROR;
       return resultClass;
   }
     else if(statusCode == 401){
-      print("${resultClass}amirdin");
-
+      resultClass = USER_NOT_REGISTERED;
+    } else {
+      resultClass = SOMTHING_WRONG;
     }
     return resultClass;
     }

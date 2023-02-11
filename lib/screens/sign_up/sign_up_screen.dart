@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,22 +37,6 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Row(
-      //     children: [
-      //       InkWell(
-      //         onTap: () {
-      //           Navigator.of(context)
-      //               .pushReplacementNamed(MainRoutes.selectLanguage);
-      //         },
-      //         child: Icon(
-      //             Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios),
-      //       ),
-      //       const SizedBox(width: 16),
-      //       const Text("Ro'yxotdan o'tish"),
-      //     ],
-      //   ),
-      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -167,6 +152,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                       /// telifon raqan
                       TextFormField(
+                        keyboardType: TextInputType.phone,
                         decoration: const InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color:  Color(0xff2d2756),),
@@ -193,6 +179,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                       /// Electron pochta
                       TextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color:  Color(0xff2d2756),),
@@ -291,7 +278,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               first_name: _nameController.text,
                               last_name: _lastNameController.text,
                               middle_name: _fatherNameController.text,
-                              phone: _phoneNumberController.text,
+                              phone: _phoneNumberController.text.replaceAll("+", ""),
                             ).then((value) async  {
                               if (value is int) {
                                 switch(value){
@@ -299,6 +286,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                     Navigator.of(context).pushReplacementNamed(MainRoutes.home_screen);
                                     Utils.saveUserAuth(true);
                                     break;
+                                  case USER_ALREADY_REGISTERED:
+                                    showInSnackBar("Bu hisobdan allaqachon ro'yxatdan o'tilgan");
+                                    break;
+                                  case USER_PHONE_NUMBER_OR_PASSWORD_ERROR:
+                                    showInSnackBar("Kiritilayotgam ma'lumotlarni yaxshilab tekshiring");
+                                    break;
+                                  case SOMTHING_WRONG:
+                                    showInSnackBar('Sizda nimader xato');
                                 }
                               } else {
                                 showInSnackBar(value.toString());

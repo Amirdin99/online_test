@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/ststus_code.dart';
 import '../../repositories/user_repositories.dart';
 import '../../rouutes/route_names.dart';
 
@@ -125,19 +126,57 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                       ),
 
-                      const SizedBox(height: 80),
                     ],
                   )),
             ),
-             SizedBox(height: MediaQuery.of(context).size.height*0.4),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 const SizedBox(),
+                 Container(
+                   margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 30),
+                   child: InkWell(
+                     onTap: (){
+                       Navigator.of(context)
+                           .pushReplacementNamed(MainRoutes.sign_up_screen);
+                     },
+                     child: Text("Ro'yxatdan o'tish",style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                       color: const Color(0xff2d2756),
+                       fontWeight: FontWeight.w600,
+                       fontSize: 14,
+                     ),),
+                   ),
+                 ),
+               ],
+             ),
+             SizedBox(height: MediaQuery.of(context).size.height*0.3),
             Container(
               margin: const EdgeInsets.only(left: 20, right: 20),
               child: GestureDetector(
                   onTap: () async {
-                    final response = await UserRepositories.getInstance().login(password: _passwordController.text, username: _gmailController.text);
+                    await UserRepositories.getInstance().
+                    login(password: _passwordController.text, username: _gmailController.text)
+                        . then((value) async {
+                    if (value is int) {
+                      switch (value) {
+                        case USER_LOGGED_IN:
+                          Navigator.of(context)
+                              .pushReplacementNamed(MainRoutes.home_screen);
+                          break;
+                        case USER_PHONE_NUMBER_OR_PASSWORD_ERROR:
+                          showInSnackBar("Kiritilinayotgan ma'lumotlarni tekshiring");
+                          break;
+                        case USER_NOT_REGISTERED:
+                          showInSnackBar("Foydalanuvchi hali ro'yxatdan o'tmagan");
+                          break;
+                        case SOMTHING_WRONG:
+                          showInSnackBar("Sinda nimadir hato");
+                    }
+                    } else {
+                    showInSnackBar(value);
+                    }
+                    });
 
-                    Navigator.of(context)
-                        .pushReplacementNamed(MainRoutes.home_screen);
                   },
                   child: Container(
                     height: 50,
@@ -158,9 +197,8 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
-
-  void signUpResault() async {
-
+  void showInSnackBar(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
-
 }
