@@ -45,17 +45,15 @@ class UserRepositories {
         body: json.encode(requestParameters));
 
     final int statusCode = response.statusCode;
-    if(statusCode == 201){
-      // var resultClass = json.decode(utf8.decode(response.bodyBytes));
-      var resultClass = USER_REGISTERED;
-      return resultClass;
-    } else if(statusCode == 400) {
-      var resultClass = USER_EALRY_REGISTERED;
-      return resultClass;
-    } else if(statusCode == 401){
+    var resultClass2 = json.decode(utf8.decode(response.bodyBytes));
+    print("Flutter registretion $resultClass2 $statusCode ${response.body}");
 
+    if(statusCode == 201 || statusCode == 201) {
+        var resultClass = USER_REGISTERED;
+        return resultClass;
+      } else {
+      return resultClass2;
     }
-    return resultClass;
   }
 
   Future<dynamic> login(

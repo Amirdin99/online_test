@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:online_test/constants/utils.dart';
 
 import '../../constants/ststus_code.dart';
 import '../../repositories/user_repositories.dart';
@@ -295,14 +296,12 @@ class _SignUpPageState extends State<SignUpPage> {
                               if (value is int) {
                                 switch(value){
                                   case USER_REGISTERED:
-                                    Navigator.of(context)
-                                        .pushReplacementNamed(MainRoutes.home_screen);
-                                    break;
-                                  case USER_EALRY_REGISTERED:
-                                    Navigator.of(context)
-                                        .pushReplacementNamed(MainRoutes.sign_in_screen);
+                                    Navigator.of(context).pushReplacementNamed(MainRoutes.home_screen);
+                                    Utils.saveUserAuth(true);
                                     break;
                                 }
+                              } else {
+                                showInSnackBar(value.toString());
                               }
                             }
                                 );
@@ -327,5 +326,9 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
     );
+  }
+  void showInSnackBar(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 }

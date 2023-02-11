@@ -9,6 +9,7 @@ import '../screens/select_language/select_language.dart';
 import '../screens/sign_in/sign_in_screen.dart';
 import '../screens/sign_up/sign_up_screen.dart';
 import '../screens/splash_screen/splash_screen.dart';
+import '../widget/pin_code_login.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -54,6 +55,9 @@ class MainNavigator extends StatelessWidget {
               break;
             case MainRoutes.test_screen:
               builder = (BuildContext _) => TestScreen();
+              break;
+              case MainRoutes.login_with_pin:
+              builder = (BuildContext _) => PassCodeScreen();
               break;
           }
           if (builder != null) {
