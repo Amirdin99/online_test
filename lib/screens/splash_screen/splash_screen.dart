@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen>
           ..addStatusListener((status) async {
             if (status == AnimationStatus.completed)   {
               isUserRegistered
-                ? Navigator.of(context).pushReplacementNamed(MainRoutes.login_with_pin)
+                ? Navigator.of(context).pushReplacementNamed(MainRoutes.sign_in_screen)
                 : Navigator.of(context).pushReplacementNamed(MainRoutes.sign_up_screen);
             }
           });
