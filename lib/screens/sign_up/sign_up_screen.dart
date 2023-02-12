@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:online_test/constants/utils.dart';
 
 import '../../constants/ststus_code.dart';
 import '../../repositories/user_repositories.dart';
@@ -23,7 +25,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _gmailController = TextEditingController();
   final TextEditingController _pinCodeController = TextEditingController();
   final TextEditingController _resentPinCodeController =
-      TextEditingController();
+  TextEditingController();
   final FocusNode _nameFocusNode = FocusNode();
   final FocusNode _lastNameFocusNode = FocusNode();
   final FocusNode _fatherNameFocusNode = FocusNode();
@@ -35,22 +37,6 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Row(
-      //     children: [
-      //       InkWell(
-      //         onTap: () {
-      //           Navigator.of(context)
-      //               .pushReplacementNamed(MainRoutes.selectLanguage);
-      //         },
-      //         child: Icon(
-      //             Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios),
-      //       ),
-      //       const SizedBox(width: 16),
-      //       const Text("Ro'yxotdan o'tish"),
-      //     ],
-      //   ),
-      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -106,10 +92,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
                       const SizedBox(height: 16),
 
@@ -131,10 +117,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
                       const SizedBox(height: 16),
 
@@ -156,16 +142,17 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
 
                       const SizedBox(height: 16),
 
                       /// telifon raqan
                       TextFormField(
+                        keyboardType: TextInputType.phone,
                         decoration: const InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color:  Color(0xff2d2756),),
@@ -182,16 +169,17 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
 
                       const SizedBox(height: 16),
 
                       /// Electron pochta
                       TextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color:  Color(0xff2d2756),),
@@ -208,10 +196,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
 
                       const SizedBox(height: 16),
@@ -234,10 +222,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
 
                       const SizedBox(height: 16),
@@ -260,16 +248,16 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
                       const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                           const SizedBox(),
+                          const SizedBox(),
                           InkWell(
                             onTap: (){
                               Navigator.of(context)
@@ -283,29 +271,35 @@ class _SignUpPageState extends State<SignUpPage> {
                       GestureDetector(
                           onTap: () async {
                             final response =
-                                await UserRepositories.getInstance()
-                                    .userRegisterApi(
+                            await UserRepositories.getInstance()
+                                .userRegisterApi(
                               password: _pinCodeController.text,
                               username: _gmailController.text,
                               first_name: _nameController.text,
                               last_name: _lastNameController.text,
                               middle_name: _fatherNameController.text,
-                              phone: _phoneNumberController.text,
+                              phone: _phoneNumberController.text.replaceAll("+", ""),
                             ).then((value) async  {
                               if (value is int) {
                                 switch(value){
                                   case USER_REGISTERED:
-                                    Navigator.of(context)
-                                        .pushReplacementNamed(MainRoutes.home_screen);
+                                    Navigator.of(context).pushReplacementNamed(MainRoutes.home_screen);
+                                    Utils.saveUserAuth(true);
                                     break;
-                                  case USER_EALRY_REGISTERED:
-                                    Navigator.of(context)
-                                        .pushReplacementNamed(MainRoutes.sign_in_screen);
+                                  case USER_ALREADY_REGISTERED:
+                                    showInSnackBar("Bu hisobdan allaqachon ro'yxatdan o'tilgan");
                                     break;
+                                  case USER_PHONE_NUMBER_OR_PASSWORD_ERROR:
+                                    showInSnackBar("Kiritilayotgam ma'lumotlarni yaxshilab tekshiring");
+                                    break;
+                                  case SOMTHING_WRONG:
+                                    showInSnackBar('Sizda nimader xato');
                                 }
+                              } else {
+                                showInSnackBar(value.toString());
                               }
                             }
-                                );
+                            );
                           },
                           child: Container(
                             height: 50,
@@ -327,5 +321,9 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
     );
+  }
+  void showInSnackBar(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 }
