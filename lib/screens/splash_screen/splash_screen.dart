@@ -28,20 +28,20 @@ class _SplashScreenState extends State<SplashScreen>
   bool isUserRegistered = false;
   void getUserAuth() async {
     isUserRegistered = await Utils.getUserAuth() ?? false;
-        setState(() {});
+    setState(() {});
   }
 
   init() {
     _animatedController =
-        AnimationController(duration: const Duration(seconds: 5), vsync: this)
-          ..forward()
-          ..addStatusListener((status) async {
-            if (status == AnimationStatus.completed)   {
-              isUserRegistered
-                ? Navigator.of(context).pushReplacementNamed(MainRoutes.sign_in_screen)
-                : Navigator.of(context).pushReplacementNamed(MainRoutes.sign_up_screen);
-            }
-          });
+    AnimationController(duration: const Duration(seconds: 5), vsync: this)
+      ..forward()
+      ..addStatusListener((status) async {
+        if (status == AnimationStatus.completed)   {
+          isUserRegistered
+              ? Navigator.of(context).pushReplacementNamed(MainRoutes.sign_in_screen)
+              : Navigator.of(context).pushReplacementNamed(MainRoutes.sign_up_screen);
+        }
+      });
     _curvedAnimation =
         CurvedAnimation(parent: _animatedController, curve: Curves.elasticOut);
   }
@@ -74,20 +74,20 @@ class _SplashScreenState extends State<SplashScreen>
                   width: 250,
                   height: 250,
                   child:
-                      Image.asset('assets/OnlineTest.png', fit: BoxFit.fill),
+                  Image.asset('assets/OnlineTest.png', fit: BoxFit.fill),
                 ),
               ),
             ),
-             const Text("Online Test",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+            const Text("Online Test",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
             visibleButton
                 ? Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 48, vertical: 18),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text("Coose Lenguage"),
-                    ),
-                  )
+              margin: const EdgeInsets.symmetric(
+                  horizontal: 48, vertical: 18),
+              child: TextButton(
+                onPressed: () {},
+                child: const Text("Coose Lenguage"),
+              ),
+            )
                 : Container(),
           ],
         ),

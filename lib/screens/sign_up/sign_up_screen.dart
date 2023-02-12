@@ -25,7 +25,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _gmailController = TextEditingController();
   final TextEditingController _pinCodeController = TextEditingController();
   final TextEditingController _resentPinCodeController =
-      TextEditingController();
+  TextEditingController();
   final FocusNode _nameFocusNode = FocusNode();
   final FocusNode _lastNameFocusNode = FocusNode();
   final FocusNode _fatherNameFocusNode = FocusNode();
@@ -92,10 +92,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
                       const SizedBox(height: 16),
 
@@ -117,10 +117,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
                       const SizedBox(height: 16),
 
@@ -142,10 +142,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
 
                       const SizedBox(height: 16),
@@ -169,10 +169,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
 
                       const SizedBox(height: 16),
@@ -196,10 +196,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
 
                       const SizedBox(height: 16),
@@ -222,10 +222,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
 
                       const SizedBox(height: 16),
@@ -248,16 +248,16 @@ class _SignUpPageState extends State<SignUpPage> {
                           return null;
                         },
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                              color: const Color(0xff2d2756),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                          color: const Color(0xff2d2756),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                       ),
                       const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                           const SizedBox(),
+                          const SizedBox(),
                           InkWell(
                             onTap: (){
                               Navigator.of(context)
@@ -271,8 +271,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       GestureDetector(
                           onTap: () async {
                             final response =
-                                await UserRepositories.getInstance()
-                                    .userRegisterApi(
+                            await UserRepositories.getInstance()
+                                .userRegisterApi(
                               password: _pinCodeController.text,
                               username: _gmailController.text,
                               first_name: _nameController.text,
@@ -299,7 +299,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 showInSnackBar(value.toString());
                               }
                             }
-                                );
+                            );
                           },
                           child: Container(
                             height: 50,

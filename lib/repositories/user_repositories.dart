@@ -46,9 +46,9 @@ class UserRepositories {
 
     final int statusCode = response.statusCode;
     if(statusCode == 201 || statusCode == 201) {
-        var resultClass = USER_REGISTERED;
-        return resultClass;
-      } else if(statusCode == 400) {
+      var resultClass = USER_REGISTERED;
+      return resultClass;
+    } else if(statusCode == 400) {
       var resultClass = USER_ALREADY_REGISTERED;
       return resultClass;
     } else if(statusCode == 401){
@@ -68,7 +68,7 @@ class UserRepositories {
       "username": username,
     };
 
-    final String baseUrl = BASE_URL.SIGN_IN_API;
+    final String baseUrl = BASE_URL.LOGIN;
     final requestUrl = Uri.parse(baseUrl);
     final response = await http.post(requestUrl,
         headers: {
@@ -78,22 +78,22 @@ class UserRepositories {
 
     final int statusCode = response.statusCode;
     if(statusCode == 200 || statusCode == 201 ){
-        resultClass = USER_LOGGED_IN;
+      resultClass = USER_LOGGED_IN;
       return resultClass;
     }
     else if(statusCode == 400) {
       resultClass = USER_PHONE_NUMBER_OR_PASSWORD_ERROR;
       return resultClass;
-  }
+    }
     else if(statusCode == 401){
       resultClass = USER_NOT_REGISTERED;
     } else {
       resultClass = SOMTHING_WRONG;
     }
     return resultClass;
-    }
+  }
 
-    Future<dynamic> postAplication(double org, String anote, int subject)async{
+  Future<dynamic> postAplication(double org, String anote, int subject)async{
     dynamic resultClass;
     final requestParameters = {
       "org": org,
@@ -102,20 +102,20 @@ class UserRepositories {
     };
     final requestUrl=Uri.parse(BASE_URL.POST_APLICATION);
     final response=await http.post(requestUrl,
-      body: json.encode(requestParameters),
-      headers: {
-        "Content-Type": 'application/json',
-      "Authorization":'Token ${Utils.token_generate}'
-      }
+        body: json.encode(requestParameters),
+        headers: {
+          "Content-Type": 'application/json',
+          "Authorization":'Token ${Utils.token_generate}'
+        }
     );
-     resultClass = json.decode(utf8.decode(response.bodyBytes));
+    resultClass = json.decode(utf8.decode(response.bodyBytes));
     final int statusCode = response.statusCode;
     if(statusCode==201){
       print(resultClass["status"]);
       return resultClass;
     }
     return requestUrl;
-    }
+  }
 
   Future<GetAplicationList> getAplicationList()async{
     GetAplicationList aplicationList;

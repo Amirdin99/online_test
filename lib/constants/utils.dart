@@ -1,4 +1,7 @@
+
+
 import 'package:shared_preferences/shared_preferences.dart';
+
 class Utils{
   static String? token_generate;
   static int? aplicationId;
@@ -23,6 +26,6 @@ class Utils{
     final sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getInt('SAVE_PIN_CODE');
   }
-  
+
 
 }
