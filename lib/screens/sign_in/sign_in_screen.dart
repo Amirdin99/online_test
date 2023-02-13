@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/ststus_code.dart';
+import '../../constants/utils.dart';
 import '../../repositories/user_repositories.dart';
 import '../../rouutes/route_names.dart';
 
@@ -21,6 +22,7 @@ class _SignInPageState extends State<SignInPage> {
   final FocusNode _gmailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
   bool _isVisible = false;
+  bool isCircularProgress = false;
 
   void updateStatus() {
     setState(() {
@@ -154,14 +156,19 @@ class _SignInPageState extends State<SignInPage> {
               margin: const EdgeInsets.only(left: 20, right: 20),
               child: GestureDetector(
                   onTap: () async {
+                    isCircularProgress = true;
+                    setState(() {});
                     await UserRepositories.getInstance().
                     login(password: _passwordController.text, username: _gmailController.text)
                         . then((value) async {
+                      isCircularProgress = false;
+                      setState(() {});
                       if (value is int) {
                         switch (value) {
                           case USER_LOGGED_IN:
                             Navigator.of(context)
                                 .pushReplacementNamed(MainRoutes.home_screen);
+                            Utils.saveUserAuth(true);
                             break;
                           case USER_PHONE_NUMBER_OR_PASSWORD_ERROR:
                             showInSnackBar("Kiritilinayotgan ma'lumotlarni tekshiring");
@@ -185,10 +192,12 @@ class _SignInPageState extends State<SignInPage> {
                         color: const Color(0xff2d2756),
                         borderRadius: BorderRadius.circular(12)),
                     child: Center(
-                      child: Text(
+                      child: !isCircularProgress
+                          ? Text(
                         "Krish".toUpperCase(),
                         style: const TextStyle(color: Colors.white),
-                      ),
+                      )
+                          : const CircularProgressIndicator(),
                     ),
                   )),
             )

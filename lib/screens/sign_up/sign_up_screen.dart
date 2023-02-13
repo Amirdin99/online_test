@@ -48,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   InkWell(
                     onTap: () {
                       Navigator.of(context)
-                          .pushReplacementNamed(MainRoutes.selectLanguage);
+                          .pushReplacementNamed(MainRoutes.sign_in_screen);
                     },
                     child: Icon(Platform.isAndroid
                         ? Icons.arrow_back
@@ -73,8 +73,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     children: [
                       const SizedBox(height: 4),
-
-                      /// Bu yerda isim
                       TextFormField(
                         decoration: const InputDecoration(
                             focusedBorder: UnderlineInputBorder(

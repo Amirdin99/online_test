@@ -9,6 +9,7 @@ class BASE_URL {
   static String GET_APLICATION=BASE_URl+"/v1/center/application/";
   static String GET_STUDENTS=BASE_URl+"/v1/center/students";
   static String GET_SUBJECT_LIST=BASE_URl+"/v1/subject/content";
+  static String GET_USER_PROFILE = BASE_URl + "/v1/auth/user/";
 
 
 }

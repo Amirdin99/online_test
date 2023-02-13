@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:online_test/models/user_model/user_model.dart';
 
 import '../constants/ststus_code.dart';
 import '../constants/url_constants.dart';
@@ -26,7 +27,6 @@ class UserRepositories {
     required String middle_name,
     required String phone,
   }) async {
-    dynamic resultClass;
     final requestParameters = {
       "password": password,
       "username": username,
@@ -46,6 +46,8 @@ class UserRepositories {
 
     final int statusCode = response.statusCode;
     if(statusCode == 201 || statusCode == 201) {
+      final result = json.decode(utf8.decode(response.bodyBytes));
+      Utils.token_generate  = result['token'];
       var resultClass = USER_REGISTERED;
       return resultClass;
     } else if(statusCode == 400) {
@@ -78,6 +80,8 @@ class UserRepositories {
 
     final int statusCode = response.statusCode;
     if(statusCode == 200 || statusCode == 201 ){
+      final result = json.decode(utf8.decode(response.bodyBytes));
+      Utils.token_generate  = result['token'];
       resultClass = USER_LOGGED_IN;
       return resultClass;
     }
@@ -170,11 +174,6 @@ class UserRepositories {
   }
   Future<GetAplication> getAplication()async{
     GetAplication aplicationList;
-    // final requestParameters = {
-    //   "org": org,
-    //   "subject": subject,
-    //   "anote": anote,
-    // };
     final requestUrl=Uri.parse(BASE_URL.GET_APLICATION+"${Utils.aplicationId}");
     final response=await http.get(requestUrl,
         // body: json.encode(requestParameters),
@@ -217,4 +216,22 @@ class UserRepositories {
     return aplicationList;
   }
 
+  Future<dynamic> getUserProfile()async{
+    UserModel userProfile;
+    final requestUrl=Uri.parse(BASE_URL.GET_USER_PROFILE);
+    final response=await http.get(requestUrl,
+        headers: {
+          "Content-Type": 'application/json',
+          "Authorization":'Token ${Utils.token_generate}'
+        }
+    );
+    final resultClass = json.decode(utf8.decode(response.bodyBytes));
+    userProfile= UserModel.fromJson(resultClass);
+    final int statusCode = response.statusCode;
+    if(statusCode==200){
+
+      return userProfile;
+    }
+    return userProfile;
+  }
 }
