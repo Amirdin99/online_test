@@ -56,9 +56,6 @@ class MainNavigator extends StatelessWidget {
             case MainRoutes.test_screen:
               builder = (BuildContext _) => TestScreen();
               break;
-              case MainRoutes.login_with_pin:
-              builder = (BuildContext _) => PassCodeScreen();
-              break;
           }
           if (builder != null) {
             return MaterialPageRoute(builder: builder, settings: settings);
