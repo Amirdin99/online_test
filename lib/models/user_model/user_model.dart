@@ -7,8 +7,8 @@ class UserModel {
   String? phone;
   List<String>? permissions;
   String? additionalPhone;
-  String? region;
-  String? district;
+  int? region;
+  int? district;
   String? address;
 
   UserModel(
@@ -31,7 +31,7 @@ class UserModel {
     lastName = json['last_name'];
     org = json['org'];
     phone = json['phone'];
-    permissions = json['permissions'].cast<String>();
+    permissions = json['permissions'] != null ? json['permissions'].cast<String>() : null;
     additionalPhone = json['additional_phone'];
     region = json['region'];
     district = json['district'];

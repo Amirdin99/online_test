@@ -191,6 +191,24 @@ class UserRepositories {
     }
     return aplicationList;
   }
+  Future<dynamic> getUserRegion() async {
+    final requestUrl=Uri.parse(BASE_URL.GET_USER_REGION+"?region=2");
+    final response=await http.get(requestUrl,
+
+        headers: {
+          "Content-Type": 'application/json',
+          "Authorization":'Token ${Utils.token_generate}'
+        }
+    );
+    final resultClass = json.decode(utf8.decode(response.bodyBytes));
+
+    final int statusCode = response.statusCode;
+    if(statusCode==200 || statusCode==201 ){
+      return resultClass;
+    }
+    return resultClass;
+  }
+
   Future<GetAplication> getStudents()async{
     GetAplication aplicationList;
     // final requestParameters = {
@@ -225,6 +243,46 @@ class UserRepositories {
           "Authorization":'Token ${Utils.token_generate}'
         }
     );
+    final resultClass = json.decode(utf8.decode(response.bodyBytes));
+    userProfile= UserModel.fromJson(resultClass);
+    final int statusCode = response.statusCode;
+    if(statusCode==200){
+
+      return userProfile;
+    }
+    return userProfile;
+  }
+
+  Future<dynamic> editUserProfile({
+    required String username,
+    required String first_name,
+    required String last_name,
+    required String middle_name,
+    required String phone,
+    required String additional_phone,
+    required int region,
+    required String district,
+    required String address,
+  })async{
+    final requestParameters = {
+      username: username,
+      first_name: first_name,
+      last_name: last_name,
+      middle_name: middle_name,
+      phone:  phone,
+      additional_phone: additional_phone,
+      region: region,
+      district: district,
+      address: address
+    };
+    UserModel userProfile;
+    final requestUrl=Uri.parse(BASE_URL.GET_USER_PROFILE);
+    final response=await http.put(requestUrl,
+        headers: {
+          "Content-Type": 'application/json',
+          "Authorization":'Token ${Utils.token_generate}'
+        },
+        body: json.encode(requestParameters));
     final resultClass = json.decode(utf8.decode(response.bodyBytes));
     userProfile= UserModel.fromJson(resultClass);
     final int statusCode = response.statusCode;
