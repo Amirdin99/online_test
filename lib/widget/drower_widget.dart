@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:online_test/repositories/user_repositories.dart';
 
+import '../models/user_model/user_model.dart';
 import '../rouutes/route_names.dart';
 
 class DroverWidget extends StatefulWidget {
@@ -10,299 +12,291 @@ class DroverWidget extends StatefulWidget {
 }
 
 class _DroverVidgetState extends State<DroverWidget> {
+
+  void initState() {
+    getValue();
+    super.initState();
+  }
+
+  Future<UserModel> getValue() async {
+   final response = await  UserRepositories.getInstance().getUserProfile();
+   return response;
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF32374d),
-      body: Column(
-        children: [
-          Container(
-            color: const Color(0xFF02314b),
-            height: 210,
-            width: double.infinity,
-            child: Container(
-              margin: const EdgeInsets.only(top: 24, left: 16),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  CircleAvatar(
-                    backgroundImage: AssetImage('assets/avatar.png'),
-                    radius: 50,
-                  ),
-                  SizedBox(height: 16),
-                  Text(
-                    "Muxtorov Inomjon",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white),
-                  ),
-                  Text(
-                    "muxtorovinomjon0227@gmail.com",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  // Divider(
-                  //   color: Colors.redAccent, //color of divider
-                  //   // height: 5, //height spacing of divider
-                  // )
-                ],
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: (){
-              Navigator.of(context).pushNamed(MainRoutes.home_screen);
-            },
-            child: Container(
-              margin: const EdgeInsets.only(top: 10, left: 10),
-              child: Row(
-                children: const [
-                  Icon(
-                    Icons.home,
-                    color: Color(0xff25D3C2),
-                    size: 25,
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    "Asosiy",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white60),
-                  )
-                ],
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(MainRoutes.my_profile_screen);
-            },
-            child: Container(
-              margin: const EdgeInsets.only(top: 20, left: 10),
-              child: Row(
-                children: const [
-                  Icon(
-                    Icons.account_circle_outlined,
-                    color: Color(0xff25D3C2),
-                    size: 25,
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    "Profil",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white60),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(
-              top: 20,
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 8,
-                ),
-                Image.asset(
-                  "assets/certificat.png",
-                  width: 30,
-                  height: 30,
-                  color: Color(0xff25D3C2),
-                ),
-                Text(
-                  "Natijalar",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white60),
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 20, left: 10),
-            child: Row(
-              children: const [
-                Icon(
-                  Icons.text_snippet,
-                  color: Color(0xff25D3C2),
-                  size: 25,
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  "Testlar",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white60),
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 20, left: 8),
-            child: InkWell(
-              onTap: (){
-                Navigator.of(context).pushNamed(MainRoutes.aplication);
-              },
-              child: Row(
-                children: const [
-                  Icon(
-                    Icons.local_post_office_outlined,
-                    color: Color(0xff25D3C2),
-                    size: 25,
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    "Ariza berish",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white60),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 20, left: 8),
-            child: Row(
-              children: const [
-                Icon(
-                  Icons.telegram,
-                  color: Color(0xff25D3C2),
-                  size: 25,
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  "Telegram",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white60),
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(
-              top: 20,
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 8,
-                ),
-                Image.asset(
-                  "assets/instagram.png",
-                  width: 30,
-                  height: 30,
-                  color: Color(0xff25D3C2),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  "Sertifikatlar",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white60),
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(
-              top: 20,
-            ),
-            child: InkWell(
-              onTap: (){
-                Navigator.of(context).pushNamed(MainRoutes.aplication);
-              },
-              child: Row(
+      body: FutureBuilder<UserModel>(
+        future: getValue(),
+        builder: (
+            BuildContext context,
+            AsyncSnapshot<UserModel> snapshot,
+            ) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child:  CircularProgressIndicator());
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return const Text('Error');
+            } else if (snapshot.hasData) {
+              return Column(
                 children: [
-                  SizedBox(
-                    width: 8,
+                  Container(
+                    color: const Color(0xFF02314b),
+                    height: 210,
+                    width: double.infinity,
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 24, left: 16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children:  [
+                          const CircleAvatar(
+                            backgroundImage: AssetImage('assets/avatar.png'),
+                            radius: 50,
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            "${(snapshot.data?.firstName ?? "--")} " + " ${(snapshot.data?.lastName ?? "")}",
+                            style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          ),
+                          Text(
+                            snapshot.data?.username ?? "---",
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  Image.asset(
-                    "assets/fasebook.png",
-                    width: 30,
-                    height: 30,
-                    color: Color(0xff25D3C2),
+                  InkWell(
+                    onTap: (){
+                       Navigator.of(context).pushNamed(MainRoutes.home_screen);
+
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 10, left: 10),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.home,
+                            color: Color(0xff25D3C2),
+                            size: 25,
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Asosiy",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white60),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                  SizedBox(
-                    width: 8,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushReplacementNamed(MainRoutes.my_profile_screen);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 20, left: 10),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.account_circle_outlined,
+                            color: Color(0xff25D3C2),
+                            size: 25,
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Profil",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white60),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                  Text(
-                    "Sertifikatlar",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white60),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const Spacer(),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Icon(
-                Icons.place,
-                color: Color(0xff25D3C2),
-              ),
-              Expanded(
-                child: Text(
-                  " Toshket shaxar, \n Amir Temur ko'chasi 119 uy",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white60),
-                ),
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(left: 16, top: 20),
-                height: 40,
-                width: 180,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(12)),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 20,
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Image.asset(
+                          "assets/certificat.png",
+                          width: 30,
+                          height: 30,
+                          color: Color(0xff25D3C2),
+                        ),
+                        Text(
+                          "Natijalar",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white60),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20, left: 10),
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.text_snippet,
+                          color: Color(0xff25D3C2),
+                          size: 25,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "Testlar",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white60),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20, left: 8),
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.of(context).pushNamed(MainRoutes.aplication);
+                      },
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.local_post_office_outlined,
+                            color: Color(0xff25D3C2),
+                            size: 25,
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Ariza berish",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white60),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20, left: 8),
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.telegram,
+                          color: Color(0xff25D3C2),
+                          size: 25,
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "Telegram",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white60),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 20,
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Image.asset(
+                          "assets/instagram.png",
+                          width: 30,
+                          height: 30,
+                          color: Color(0xff25D3C2),
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "Sertifikatlar",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white60),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 20,
+                    ),
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.of(context).pushNamed(MainRoutes.aplication);
+                      },
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Image.asset(
+                            "assets/fasebook.png",
+                            width: 30,
+                            height: 30,
+                            color: Color(0xff25D3C2),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Sertifikatlar",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white60),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
-                      SizedBox(width: 10),
                       Icon(
-                        Icons.phone,
+                        Icons.place,
                         color: Color(0xff25D3C2),
                       ),
-                      SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          "+998998780787",
+                          " Toshket shaxar, \n Amir Temur ko'chasi 119 uy",
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
@@ -311,13 +305,53 @@ class _DroverVidgetState extends State<DroverWidget> {
                       )
                     ],
                   ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-        ],
+                  Row(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(left: 16, top: 20),
+                        height: 40,
+                        width: 180,
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              SizedBox(width: 10),
+                              Icon(
+                                Icons.phone,
+                                color: Color(0xff25D3C2),
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: Text(
+                                  "+998998780787",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white60),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              );
+            } else {
+              return const Text('Empty data');
+            }
+          } else {
+            return Text('State: ${snapshot.connectionState}');
+          }
+        },
       ),
     );
   }
 }
+
+
