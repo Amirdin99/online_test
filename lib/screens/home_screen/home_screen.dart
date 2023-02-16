@@ -25,18 +25,14 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
             color: Colors.white
         ),),
         actions: [
-          TextButton(onPressed: (){}, child: const Text("Testlar",style: TextStyle(
+          TextButton(onPressed: (){
+            Navigator.of(context).pushNamed(MainRoutes.test_screen);
+          }, child: const Text("O'quv markazlari",style: TextStyle(
             color: Colors.white,
           ),)),
           const  SizedBox(
             width: 5,
           ),
-          TextButton(onPressed: (){
-            Navigator.of(context).pushNamed(MainRoutes.aplication);
-          }, child: const Text("Sertifikatlar",style: TextStyle(
-            color: Colors.white,
-          ),)),
-
         ],
       ),
 

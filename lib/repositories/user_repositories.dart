@@ -8,6 +8,7 @@ import '../constants/url_constants.dart';
 import '../constants/utils.dart';
 import '../models/aplication_models/get_aplication.dart';
 import '../models/aplication_models/get_aplication_list.dart';
+import '../models/organization_model /organization.dart';
 
 class UserRepositories {
   static final UserRepositories _singleton = UserRepositories._internal();
@@ -233,5 +234,23 @@ class UserRepositories {
       return userProfile;
     }
     return userProfile;
+  }
+  Future<dynamic> getOrganiztion()async{
+    Organization organization;
+    final requestUrl=Uri.parse(BASE_URL.GET_ORGANIZATION_LIST);
+    final response=await http.get(requestUrl,
+        headers: {
+          "Content-Type": 'application/json',
+          "Authorization":'Token ${Utils.token_generate}'
+        }
+    );
+    final resultClass = json.decode(utf8.decode(response.bodyBytes));
+    organization= Organization.fromJson(resultClass);
+    final int statusCode = response.statusCode;
+    if(statusCode==200){
+
+      return organization;
+    }
+    return organization;
   }
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:online_test/rouutes/route_names.dart';
 import 'package:online_test/screens/aplication/aplication_page.dart';
 import 'package:online_test/screens/home_screen/home_widgets/test_screen.dart';
+import 'package:online_test/screens/home_screen/subjects/subject_page.dart';
+import 'package:online_test/screens/organization/organization_page.dart';
 
 import '../screens/home_screen/home_screen.dart';
 import '../screens/my_profile_page.dart';
@@ -54,7 +56,10 @@ class MainNavigator extends StatelessWidget {
               builder = (BuildContext _) => const MyProfilePage();
               break;
             case MainRoutes.test_screen:
-              builder = (BuildContext _) => TestScreen();
+              builder = (BuildContext _) => OrganizationPage();
+              break;
+            case MainRoutes.subject_page:
+              builder = (BuildContext _) => SubjectPage();
               break;
           }
           if (builder != null) {

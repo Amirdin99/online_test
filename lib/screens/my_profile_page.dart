@@ -27,16 +27,17 @@ class _MyProfilePageState extends State<MyProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            Navigator.of(context)
+                .pushReplacementNamed(MainRoutes.home_screen);
+          },
+          child: Icon(
+              Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios),
+        ),
         title: Row(
           children: [
-            InkWell(
-              onTap: () {
-                Navigator.of(context)
-                    .pushReplacementNamed(MainRoutes.home_screen);
-              },
-              child: Icon(
-                  Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios),
-            ),
+
             const SizedBox(width: 16),
             const Text("Mening Profilm"),
           ],
