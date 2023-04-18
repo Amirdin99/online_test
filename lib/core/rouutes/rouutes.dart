@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:online_test/rouutes/route_names.dart';
-import 'package:online_test/screens/aplication/aplication_page.dart';
-import 'package:online_test/screens/home_screen/home_widgets/test_screen.dart';
+import 'package:online_test/core/rouutes/route_names.dart';
+import 'package:online_test/view/screens/aplication/aplication_page.dart';
+import 'package:online_test/view/screens/home_screen/home_screen.dart';
+import 'package:online_test/view/screens/home_screen/home_widgets/test_screen.dart';
+import 'package:online_test/view/screens/my_profile_page.dart';
+import 'package:online_test/view/screens/select_language/select_language.dart';
+import 'package:online_test/view/screens/sign_in/sign_in_screen.dart';
+import 'package:online_test/view/screens/sign_up/sign_up_screen.dart';
+import 'package:online_test/view/screens/splash_screen/splash_screen.dart';
 
-import '../screens/home_screen/home_screen.dart';
-import '../screens/my_profile_page.dart';
-import '../screens/select_language/select_language.dart';
-import '../screens/sign_in/sign_in_screen.dart';
-import '../screens/sign_up/sign_up_screen.dart';
-import '../screens/splash_screen/splash_screen.dart';
-import '../widget/pin_code_login.dart';
+
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 

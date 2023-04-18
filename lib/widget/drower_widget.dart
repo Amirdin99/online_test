@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:online_test/repositories/user_repositories.dart';
 
+import '../core/rouutes/route_names.dart';
 import '../models/user_model/user_model.dart';
-import '../rouutes/route_names.dart';
 
 class DroverWidget extends StatefulWidget {
   const DroverWidget({Key? key}) : super(key: key);
@@ -14,14 +13,9 @@ class DroverWidget extends StatefulWidget {
 class _DroverVidgetState extends State<DroverWidget> {
 
   void initState() {
-    getValue();
     super.initState();
   }
 
-  Future<UserModel> getValue() async {
-   final response = await  UserRepositories.getInstance().getUserProfile();
-   return response;
-  }
 
 
 
@@ -30,7 +24,7 @@ class _DroverVidgetState extends State<DroverWidget> {
     return Scaffold(
       backgroundColor: const Color(0xFF32374d),
       body: FutureBuilder<UserModel>(
-        future: getValue(),
+        future: null,
         builder: (
             BuildContext context,
             AsyncSnapshot<UserModel> snapshot,

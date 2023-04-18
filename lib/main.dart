@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_test/rouutes/rouutes.dart';
 
+import 'core/rouutes/rouutes.dart';
 import 'models/NavigationService.dart';
 
 void main() {
