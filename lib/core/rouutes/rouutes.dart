@@ -42,7 +42,7 @@ class MainNavigator extends StatelessWidget {
               builder = (BuildContext _) => const SelectLanguage();
               break;
             case MainRoutes.sign_up_screen:
-              builder = (BuildContext _) => const SignUpPage();
+              builder = (BuildContext _) =>  SignUpPage();
               break;
             case MainRoutes.sign_in_screen:
               builder = (BuildContext _) => const SignInPage();
