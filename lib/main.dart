@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:online_test/view_model/auth_view_mode.dart';
+import 'package:provider/provider.dart';
 
 import 'core/rouutes/rouutes.dart';
 import 'models/NavigationService.dart';
@@ -28,11 +30,16 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      navigatorKey: navigationService.navigatorKey,
-      home: const MainNavigator(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: AuthViewModel()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        navigatorKey: navigationService.navigatorKey,
+        home: const MainNavigator(),
+      ),
     );
   }
 }

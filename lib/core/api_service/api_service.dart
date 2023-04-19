@@ -13,7 +13,7 @@ class MediaService extends BASE_URL {
   Future getResponse(String url) async {
     dynamic responseJson;
     try {
-      final response = await http.get(Uri.parse(BASE_URl + SIGN_UP + url));
+      final response = await http.get(Uri.parse(baseUrl + url));
       responseJson = returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');
